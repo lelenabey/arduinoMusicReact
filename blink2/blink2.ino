@@ -28,35 +28,21 @@ void setup() {
 // the loop routine runs over and over again forever:
 void loop() {
   val = analogRead(a0);    // read the input pin
-  //Serial.println(val);
-  if(val < low){
-    low = val;
-  }
-  else if(val > high){
-    high = val*.75;
-  }
-  i++;
-  //high = high*.95;
-  if(i >10000){
-    low = 0;
-    high = 0;
-    i = 0;
-  }
-  thres = (high+low)/2;
-  if(val > low and val <=(thres)){
-    Serial.println(-1);
+  Serial.println(val);
+
+  if(val > 1 and val <2){
+    
     analogWrite(red, 255); 
-    digitalWrite(blue, LOW);// turn the LED on (HIGH is the voltage level)          
-    //delay(10);// wait for a second
+    digitalWrite(blue, LOW);// turn the LED on (HIGH is the voltage level)             // wait for a second
+    delay(100);
   }
-  else if(val >(thres)){
-    Serial.println(2);
-    analogWrite(red, 25);  
-    digitalWrite(blue, HIGH);// turn the LED off by making the voltage LOW    
-   // delay(10);// wait for a second
+  else if(val >=2){
+    digitalWrite(red, 25);  
+    digitalWrite(blue, HIGH);// turn the LED off by making the voltage LOW             // wait for a second
+    delay(100);
   }
   else{
-    //Serial.println(0);
+   
       analogWrite(red,0); 
       analogWrite(blue, 0); 
    
